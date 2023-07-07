@@ -2,13 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package model;
 
 /**
  *
  * @author haith
  */
 public class Vehicle {
+
     private String id;
     private String brand;
     private String licensePlates;
@@ -66,25 +67,18 @@ public class Vehicle {
         this.total = total;
     }
 
-   
+    public void show() {
+        System.out.println("==============STATUS==============");
+                System.out.print("|"); System.out.println("- ID of vehicle: " + id);
+                System.out.print("|"); System.out.println("- Brand: "+brand);
+                System.out.print("|"); System.out.println("- License plates: " + licensePlates);
+        if (isValid == true) {
+                    System.out.print("|"); System.out.println("- Item status: still have");
+        } else {
+                    System.out.print("|"); System.out.println("- Item status: out of item");
+        }
+                System.out.print("|"); System.out.println("Total: "+total);
+        System.out.println("==================================");
 
-    public void show(){
-
-    }
-    public void sortByCost(){
-        
-    }
-    public void addNewVehicle(){
-        
-    }
-    public void searchByBrand(){
-        
-    }
-    public void searchByValid(){
-        
-    }
-    public void delete(){
-        
     }
 }
-    

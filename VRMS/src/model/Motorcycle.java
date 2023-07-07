@@ -2,21 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Model;
+package model;
 
 /**
  *
  * @author haith
  */
-public class Bicycle extends Vehicle {
+public class Motorcycle extends Vehicle{
     private String type;
     private double costPerHour;
 
-    public Bicycle() {
+    public Motorcycle() {
     }
 
-    public Bicycle(String type, double costPerHour, String ID, String Brand, String LicensePlates, boolean isValid, int total) {
-        super(ID, Brand, LicensePlates, isValid, total);
+    public Motorcycle(String type, double costPerHour, String id, String brand, String licensePlates, boolean isValid, int total) {
+        super(id, brand, licensePlates, isValid, total);
         this.type = type;
         this.costPerHour = costPerHour;
     }
@@ -37,6 +37,6 @@ public class Bicycle extends Vehicle {
         this.costPerHour = costPerHour;
     }
 
-    
    
+
 }
