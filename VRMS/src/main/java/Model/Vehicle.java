@@ -9,45 +9,45 @@ package Model;
  * @author haith
  */
 public class Vehicle {
-    private String ID;
-    private String Brand;
-    private String LicensePlates;
+    private String id;
+    private String brand;
+    private String licensePlates;
     private boolean isValid;
     private int total;
 
     public Vehicle() {
     }
 
-    public Vehicle(String ID, String Brand, String LicensePlates, boolean isValid, int total) {
-        this.ID = ID;
-        this.Brand = Brand;
-        this.LicensePlates = LicensePlates;
+    public Vehicle(String id, String brand, String licensePlates, boolean isValid, int total) {
+        this.id = id;
+        this.brand = brand;
+        this.licensePlates = licensePlates;
         this.isValid = isValid;
         this.total = total;
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getBrand() {
-        return Brand;
+        return brand;
     }
 
-    public void setBrand(String Brand) {
-        this.Brand = Brand;
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getLicensePlates() {
-        return LicensePlates;
+        return licensePlates;
     }
 
-    public void setLicensePlates(String LicensePlates) {
-        this.LicensePlates = LicensePlates;
+    public void setLicensePlates(String licensePlates) {
+        this.licensePlates = licensePlates;
     }
 
     public boolean isIsValid() {
@@ -65,7 +65,9 @@ public class Vehicle {
     public void setTotal(int total) {
         this.total = total;
     }
-    
+
+   
+
     public void show(){
 
     }

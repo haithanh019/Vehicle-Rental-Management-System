@@ -9,34 +9,34 @@ package Model;
  * @author haith
  */
 public class Motorcycle extends Vehicle{
-    private String Type;
-    private double CostPerHour;
+    private String type;
+    private double costPerHour;
 
     public Motorcycle() {
     }
 
-    public Motorcycle(String Type, double CostPerHour, String ID, String Brand, String LicensePlates, boolean isValid, int total) {
-        super(ID, Brand, LicensePlates, isValid, total);
-        this.Type = Type;
-        this.CostPerHour = CostPerHour;
+    public Motorcycle(String type, double costPerHour, String id, String brand, String licensePlates, boolean isValid, int total) {
+        super(id, brand, licensePlates, isValid, total);
+        this.type = type;
+        this.costPerHour = costPerHour;
     }
 
     public String getType() {
-        return Type;
+        return type;
     }
 
-    public void setType(String Type) {
-        this.Type = Type;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getCostPerHour() {
-        return CostPerHour;
+        return costPerHour;
     }
 
-    public void setCostPerHour(double CostPerHour) {
-        this.CostPerHour = CostPerHour;
+    public void setCostPerHour(double costPerHour) {
+        this.costPerHour = costPerHour;
     }
-    public void searchByType(){
-        
-    }
+
+   
+
 }

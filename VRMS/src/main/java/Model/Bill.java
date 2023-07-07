@@ -9,7 +9,7 @@ package Model;
  * @author haith
  */
 public class Bill {
-    private String ID;
+    private String id;
     private Vehicle vehicle;
     private Customer customer;
     private String dateOfRent;
@@ -20,7 +20,7 @@ public class Bill {
     }
 
     public Bill(String ID, Vehicle vehicle, Customer customer, String dateOfRent, String dateOfPay, double cost) {
-        this.ID = ID;
+        this.id = id;
         this.vehicle = vehicle;
         this.customer = customer;
         this.dateOfRent = dateOfRent;
@@ -29,11 +29,11 @@ public class Bill {
     }
 
     public String getID() {
-        return ID;
+        return id;
     }
 
     public void setID(String ID) {
-        this.ID = ID;
+        this.id = id;
     }
 
     public Vehicle getVehicle() {

@@ -9,8 +9,8 @@ package Model;
  * @author haith
  */
 public class Customer {
-    private int CCCD;
-    private int CMND;
+    private int cccd;
+    private int cmnd;
     private String name;
     private String dateOfBirth;
     private String address;
@@ -22,9 +22,9 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int CCCD, int CMND, String name, String dateOfBirth, String address, String phoneNumber, Vehicle vehicle, int hour, int amount) {
-        this.CCCD = CCCD;
-        this.CMND = CMND;
+    public Customer(int cccd, int cmnd, String name, String dateOfBirth, String address, String phoneNumber, Vehicle vehicle, int hour, int amount) {
+        this.cccd = cccd;
+        this.cmnd = cmnd;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
@@ -34,20 +34,20 @@ public class Customer {
         this.amount = amount;
     }
 
-    public int getCCCD() {
-        return CCCD;
+    public int getCccd() {
+        return cccd;
     }
 
-    public void setCCCD(int CCCD) {
-        this.CCCD = CCCD;
+    public void setCccd(int cccd) {
+        this.cccd = cccd;
     }
 
-    public int getCMND() {
-        return CMND;
+    public int getCmnd() {
+        return cmnd;
     }
 
-    public void setCMND(int CMND) {
-        this.CMND = CMND;
+    public void setCmnd(int cmnd) {
+        this.cmnd = cmnd;
     }
 
     public String getName() {
@@ -105,6 +105,7 @@ public class Customer {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+    
     public void Rent(){
         
     }
