@@ -9,12 +9,13 @@ package model;
  * @author haith
  */
 public class Bicycle extends Vehicle {
+
     private String type;
 
     public Bicycle() {
     }
 
-    public Bicycle(String id, String brand, String licensePlates, int total,double costPerHour, String type) {
+    public Bicycle(String id, String brand, String licensePlates, int total, double costPerHour, String type) {
         super(id, brand, licensePlates, total, costPerHour);
         this.type = type;
     }
