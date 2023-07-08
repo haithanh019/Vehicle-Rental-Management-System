@@ -105,11 +105,4 @@ public class Customer {
     public void setAmount(int amount) {
         this.amount = amount;
     }
-    
-    public void Rent(){
-        
-    }
-    public void Pay(){
-        
-    }
 }

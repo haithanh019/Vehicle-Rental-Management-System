@@ -1,21 +1,21 @@
-
 package view;
 
-public class Management extends Menu<String>{
-    
+public class Management extends Menu<String> {
+
     public static void main(String[] args) {
         Management mg = new Management();
         mg.run();
     }
-    
-    static String[] menu ={"Ha An Cut 1","Ha An Cut 2","Ha An Cut 3","Exit"};
-    public Management(){
+
+    static String[] menu = {"Ha An Cut 1", "Ha An Cut 2", "Ha An Cut 3", "Exit"};
+
+    public Management() {
         super("Car Management", menu, null);
     }
 
     @Override
     public void execute(int n) {
-        switch(n){
+        switch (n) {
             case 1:
                 //Vi du
                 searchVehicle();
@@ -33,13 +33,13 @@ public class Management extends Menu<String>{
                 break;
         }
     }
-      
-    public void searchVehicle(){
-        String[] mSearch = {"Mortorcycle","Bicycle","Back to MENU"};
+
+    public void searchVehicle() {
+        String[] mSearch = {"Mortorcycle", "Bicycle", "Back to MENU"};
         Menu m = new Menu("Vehicle Searching", mSearch, this) {
             @Override
             public void execute(int n) {
-                switch(n){
+                switch (n) {
                     case 1:
                         break;
                     case 2:
@@ -50,7 +50,6 @@ public class Management extends Menu<String>{
                             parentMenu.run();
                         }
                         break;
-
                 }
             }
         };
