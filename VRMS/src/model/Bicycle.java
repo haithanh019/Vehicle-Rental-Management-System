@@ -10,15 +10,13 @@ package model;
  */
 public class Bicycle extends Vehicle {
     private String type;
-    private double costPerHour;
 
     public Bicycle() {
     }
 
-    public Bicycle(String type, double costPerHour, String ID, String Brand, String LicensePlates, boolean isValid, int total) {
-        super(ID, Brand, LicensePlates, isValid, total);
+    public Bicycle(String id, String brand, String licensePlates, int total,double costPerHour, String type) {
+        super(id, brand, licensePlates, total, costPerHour);
         this.type = type;
-        this.costPerHour = costPerHour;
     }
 
     public String getType() {
@@ -29,14 +27,9 @@ public class Bicycle extends Vehicle {
         this.type = type;
     }
 
-    public double getCostPerHour() {
-        return costPerHour;
+    @Override
+    public void show() {
+        System.out.printf("|BICYCLE|%7s|%5s|%8s|%8s|%5s|%2s|", type, id, brand, licensePlates, costPerHour, total);
     }
 
-    public void setCostPerHour(double costPerHour) {
-        this.costPerHour = costPerHour;
-    }
-
-    
-   
 }

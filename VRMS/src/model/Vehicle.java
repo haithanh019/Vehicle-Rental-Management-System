@@ -8,23 +8,23 @@ package model;
  *
  * @author haith
  */
-public class Vehicle {
+public abstract class Vehicle {
 
-    private String id;
-    private String brand;
-    private String licensePlates;
-    private boolean isValid;
-    private int total;
+    protected String id;
+    protected String brand;
+    protected String licensePlates;
+    protected int total;
+    protected double costPerHour;
 
     public Vehicle() {
     }
 
-    public Vehicle(String id, String brand, String licensePlates, boolean isValid, int total) {
+    public Vehicle(String id, String brand, String licensePlates, int total, double costPerHour) {
         this.id = id;
         this.brand = brand;
         this.licensePlates = licensePlates;
-        this.isValid = isValid;
         this.total = total;
+        this.costPerHour = costPerHour;
     }
 
     public String getId() {
@@ -51,14 +51,6 @@ public class Vehicle {
         this.licensePlates = licensePlates;
     }
 
-    public boolean isIsValid() {
-        return isValid;
-    }
-
-    public void setIsValid(boolean isValid) {
-        this.isValid = isValid;
-    }
-
     public int getTotal() {
         return total;
     }
@@ -67,18 +59,13 @@ public class Vehicle {
         this.total = total;
     }
 
-    public void show() {
-        System.out.println("==============STATUS==============");
-                System.out.print("|"); System.out.println("- ID of vehicle: " + id);
-                System.out.print("|"); System.out.println("- Brand: "+brand);
-                System.out.print("|"); System.out.println("- License plates: " + licensePlates);
-        if (isValid == true) {
-                    System.out.print("|"); System.out.println("- Item status: still have");
-        } else {
-                    System.out.print("|"); System.out.println("- Item status: out of item");
-        }
-                System.out.print("|"); System.out.println("Total: "+total);
-        System.out.println("==================================");
-
+    public double getCostPerHour() {
+        return costPerHour;
     }
+
+    public void setCostPerHour(double costPerHour) {
+        this.costPerHour = costPerHour;
+    }
+
+    public abstract void show();
 }
