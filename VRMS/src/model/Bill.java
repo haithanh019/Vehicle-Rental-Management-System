@@ -19,7 +19,7 @@ public class Bill {
     public Bill() {
     }
 
-    public Bill(String ID, Vehicle vehicle, Customer customer, String dateOfRent, String dateOfPay, double cost) {
+    public Bill(String id, Vehicle vehicle, Customer customer, String dateOfRent, String dateOfPay, double cost) {
         this.id = id;
         this.vehicle = vehicle;
         this.customer = customer;
@@ -32,7 +32,7 @@ public class Bill {
         return id;
     }
 
-    public void setID(String ID) {
+    public void setID(String id) {
         this.id = id;
     }
 

@@ -15,11 +15,13 @@ public class Bicycle extends Vehicle {
     public Bicycle() {
     }
 
-    public Bicycle(String type, double costPerHour, String ID, String Brand, String LicensePlates, boolean isValid, int total) {
-        super(ID, Brand, LicensePlates, isValid, total);
+    public Bicycle(String type, double costPerHour, String id, String brand, String licensePlates, boolean isValid, int total) {
+        super(id, brand, licensePlates, isValid, total);
         this.type = type;
         this.costPerHour = costPerHour;
     }
+
+    
 
     public String getType() {
         return type;
