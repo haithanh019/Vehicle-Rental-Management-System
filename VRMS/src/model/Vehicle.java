@@ -13,17 +13,15 @@ public abstract class Vehicle {
     protected String id;
     protected String brand;
     protected String licensePlates;
-    protected int total;
     protected double costPerHour;
 
     public Vehicle() {
     }
 
-    public Vehicle(String id, String brand, String licensePlates, int total, double costPerHour) {
+    public Vehicle(String id, String brand, String licensePlates, double costPerHour) {
         this.id = id;
         this.brand = brand;
         this.licensePlates = licensePlates;
-        this.total = total;
         this.costPerHour = costPerHour;
     }
 
@@ -49,14 +47,6 @@ public abstract class Vehicle {
 
     public void setLicensePlates(String licensePlates) {
         this.licensePlates = licensePlates;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
     }
 
     public double getCostPerHour() {

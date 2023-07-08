@@ -14,8 +14,8 @@ public class Motorcycle extends Vehicle{
     public Motorcycle() {
     }
 
-    public Motorcycle(String id, String brand, String licensePlates, int total, double costPerHour, String type) {
-        super(id, brand, licensePlates, total, costPerHour);
+    public Motorcycle(String id, String brand, String licensePlates, double costPerHour, String type) {
+        super(id, brand, licensePlates, costPerHour);
         this.type = type;
     }
 
@@ -29,6 +29,6 @@ public class Motorcycle extends Vehicle{
 
     @Override
     public void show() {
-        System.out.printf("|MOTORCYCLE|%7s|%5s|%8s|%8s|%5s|%2s|", type, id, brand, licensePlates, costPerHour, total);
+        System.out.printf("|MOTORCYCLE|%7s|%5s|%8s|%8s|%5s|", type, id, brand, licensePlates, costPerHour);
     }
 }
