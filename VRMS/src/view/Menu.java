@@ -18,9 +18,7 @@ public abstract class Menu<T> {
     }
     //--------------------
     public void display(){
-        System.out.println("\n-------------------------");
-        System.out.println(title);
-        System.out.println("-------------------------");
+        System.out.println("\n===================[" + title + "]===================");
         for (int i = 0; i < option.size(); i++)
             System.out.println((i+1)+"."+option.get(i));
         System.out.println("-------------------------");
@@ -29,7 +27,7 @@ public abstract class Menu<T> {
     public int getSelected(){
         display();
         Scanner sc = new Scanner(System.in);
-        System.out.println("Eenter selection..");
+        System.out.print("\nEenter selection: ");
         return sc.nextInt();
     }
     //--------------------

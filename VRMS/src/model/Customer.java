@@ -10,28 +10,20 @@ package model;
  */
 public class Customer {
     private int cccd;
-    private int cmnd;
     private String name;
     private String dateOfBirth;
     private String address;
     private String phoneNumber;
-    private Vehicle vehicle;
-    private int hour;
-    private int amount;
 
     public Customer() {
     }
 
-    public Customer(int cccd, int cmnd, String name, String dateOfBirth, String address, String phoneNumber, Vehicle vehicle, int hour, int amount) {
+    public Customer(int cccd, String name, String dateOfBirth, String address, String phoneNumber) {
         this.cccd = cccd;
-        this.cmnd = cmnd;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.vehicle = vehicle;
-        this.hour = hour;
-        this.amount = amount;
     }
 
     public int getCccd() {
@@ -40,14 +32,6 @@ public class Customer {
 
     public void setCccd(int cccd) {
         this.cccd = cccd;
-    }
-
-    public int getCmnd() {
-        return cmnd;
-    }
-
-    public void setCmnd(int cmnd) {
-        this.cmnd = cmnd;
     }
 
     public String getName() {
@@ -80,29 +64,5 @@ public class Customer {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
-
-    public int getHour() {
-        return hour;
-    }
-
-    public void setHour(int hour) {
-        this.hour = hour;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 }

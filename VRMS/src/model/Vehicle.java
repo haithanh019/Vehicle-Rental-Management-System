@@ -10,15 +10,17 @@ package model;
  */
 public abstract class Vehicle {
 
+    protected String type;
     protected String id;
     protected String brand;
     protected String licensePlates;
-    protected double costPerHour;
+    protected Double costPerHour;
 
     public Vehicle() {
     }
 
-    public Vehicle(String id, String brand, String licensePlates, double costPerHour) {
+    public Vehicle(String type, String id, String brand, String licensePlates, Double costPerHour) {
+        this.type = type;
         this.id = id;
         this.brand = brand;
         this.licensePlates = licensePlates;
@@ -49,11 +51,11 @@ public abstract class Vehicle {
         this.licensePlates = licensePlates;
     }
 
-    public double getCostPerHour() {
+    public Double getCostPerHour() {
         return costPerHour;
     }
 
-    public void setCostPerHour(double costPerHour) {
+    public void setCostPerHour(Double costPerHour) {
         this.costPerHour = costPerHour;
     }
 

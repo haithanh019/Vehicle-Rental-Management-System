@@ -9,14 +9,11 @@ package model;
  * @author haith
  */
 public class Motorcycle extends Vehicle{
-    private String type;
-
     public Motorcycle() {
     }
 
-    public Motorcycle(String id, String brand, String licensePlates, double costPerHour, String type) {
-        super(id, brand, licensePlates, costPerHour);
-        this.type = type;
+    public Motorcycle(String type, String id, String brand, String licensePlates, Double costPerHour) {
+        super(type, id, brand, licensePlates, costPerHour);
     }
 
     public String getType() {
@@ -29,6 +26,6 @@ public class Motorcycle extends Vehicle{
 
     @Override
     public void show() {
-        System.out.printf("|MOTORCYCLE|%7s|%5s|%8s|%8s|%5s|", type, id, brand, licensePlates, costPerHour);
+        System.out.printf("\n|MOTORCYCLE|%-10s|%4s|%-10s|%8s|%7s|", type, id, brand, licensePlates, costPerHour);
     }
 }

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package CheckValidator;
+package utils;
 
-import valid.DataValidator;
-import static valid.DataValidator.checkRegex;
+import utils.DataValidator;
+import static utils.DataValidator.checkRegex;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.function.Predicate;
