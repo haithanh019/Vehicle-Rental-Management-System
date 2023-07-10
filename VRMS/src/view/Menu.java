@@ -18,10 +18,10 @@ public abstract class Menu<T> {
     }
     //--------------------
     public void display(){
-        System.out.println("\n===================[" + title + "]===================");
+        System.out.println("\n===============[" + title + "]===============");
         for (int i = 0; i < option.size(); i++)
             System.out.println((i+1)+"."+option.get(i));
-        System.out.println("-------------------------");
+        System.out.println("----------------------------------------------");
     }
     //--------------------
     public int getSelected(){
@@ -44,4 +44,5 @@ public abstract class Menu<T> {
         }
     }
     //--------------------
+
 }
