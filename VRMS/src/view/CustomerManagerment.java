@@ -21,6 +21,7 @@ public class CustomerManagerment extends Menu<String> {
     private CustomerController cusc = new CustomerController();
     static ArrayList<Customer> customerList = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
+    static Customer customer = new Customer();
     private static final String PATH_MOTOR = "D:\\FPT_doc\\SU23_PRO192_V2\\Assignments\\Vehicle-Rental-Management-System\\VRMS\\src\\resources\\Customer.txt";
 
     public static void main(String[] args) {
@@ -64,15 +65,15 @@ public class CustomerManagerment extends Menu<String> {
         String address = Input.inputString("Enter address: ");
         String phoneNumber = Input.inputString("Phone Number (10 numbers)", DataValidator.phone_regex);
         Customer customers;
-        customers = new Customer(cccd,name,dateOfBirth,address, phoneNumber);
+        customers = new Customer(cccd, name, dateOfBirth, address, phoneNumber);
         cusc.addCustomer(customers);
         System.out.println("Customer added successfully!");
     }
-    
+
     public void displayCustomer() {
         customerList.forEach(c -> System.out.println(c));
         System.out.println("_______Display Customer__________");
-        cusc.displayCustomer(); 
+        cusc.displayCustomer();
         System.out.println("Total of customer is: " + cusc.totalCustomer());
     }
 
@@ -133,21 +134,50 @@ public class CustomerManagerment extends Menu<String> {
 
         }
     }
-    
-    public void updateCustomerDetails() {
-        System.out.print("Enter the customer CCCD to update: ");
-        String cccd = scanner.nextLine();
-        System.out.print("Enter the new CCCD: ");
-        String newCccd = scanner.nextLine();
-        System.out.print("Enter the new name: ");
-        String newName = scanner.nextLine();
-        System.out.print("Enter the new date of Birth (dd/MM/yyyy): ");
-        String newDateOfBirth = scanner.nextLine();
-        System.out.print("Enter the new address: ");
-        String newAddress = scanner.nextLine();
-        System.out.print("Enter the new phone: ");
-        String newPhone = scanner.nextLine();
-        cusc.updateCustomer(newCccd,newName,newDateOfBirth,newAddress,newPhone);
+
+    public void Update() {
+        String[] mSearch = {"Update CCCD", "Update name", "Update date of birth", "Update address", "Update phone number"};
+        Menu m = new Menu("UPDATE INFORMATION", mSearch, this) {
+            @Override
+            public void execute(int n) {
+                System.out.print("Enter the customer CCCD to update: ");
+                String cccd = scanner.nextLine();
+                switch (n) {
+                    case 1:
+                        String newCccd = Input.inputString("Enter CCCD: ", DataValidator.CCCD_regex);
+                        cusc.updateCustomerCCCD(customer, cccd);
+                        break;
+                    case 2:
+                        String newName = Input.inputString("Enter Name");
+                        cusc.updateCustomerName(customer, newName);
+                        break;
+                    case 3:
+                        System.out.println("Enter date birth (dd/mm/yyyy): ");
+                        String newDateOfBirth = scanner.nextLine();
+                        if (!DataValidator.validateDateOfBirth(newDateOfBirth)) {
+                            System.out.println("Invalid Date of Birth format.");
+                            return;
+                        }
+                        cusc.updateCustomerDateOfBirth(customer, newDateOfBirth);
+                        break;
+                    case 4:
+                        String address = Input.inputString("Enter address: ");
+                        cusc.updateCustomerAddress(customer, address);
+                        
+                        break;
+                    case 5:
+                        String phoneNumber = Input.inputString("Phone Number (10 numbers)", DataValidator.phone_regex);
+                        cusc.updateCustomerPhoneNumber(customer, phoneNumber);
+                    case 6:
+                        System.out.println("Returning to the main menu.");
+                        if (parentMenu != null) {
+                            parentMenu.run();
+                        }
+                        break;
+                }
+            }
+        };
+        m.run();
     }
 
 }

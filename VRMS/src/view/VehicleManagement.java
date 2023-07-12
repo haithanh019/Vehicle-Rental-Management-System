@@ -3,6 +3,9 @@ package view;
 import controllers.VehicleController;
 import model.Bicycle;
 import model.Motorcycle;
+import utils.DataValidator;
+import utils.Input;
+import static view.CustomerManagerment.scanner;
 
 public class VehicleManagement extends Menu<String> {
 
@@ -246,5 +249,18 @@ public class VehicleManagement extends Menu<String> {
         vc.readDataFromFile(PATH_MOTOR, Motorcycle.class);
         vc.readDataFromFile(PATH_BICYCLE, Bicycle.class);
         vc.displayVehiclesList();
+    }
+    public void inputCustomer(){
+        System.out.println("_______ADD NEW CUSTOMER_________");
+        String cccd = Input.inputString("Enter CCCD: ", DataValidator.CCCD_regex);
+        String name = Input.inputString("Enter Name");
+        System.out.println("Enter date birth (dd/mm/yyyy): ");
+        String dateOfBirth = scanner.nextLine();
+        if (!DataValidator.validateDateOfBirth(dateOfBirth)) {
+            System.out.println("Invalid Date of Birth format.");
+            return;
+        }
+        String address = Input.inputString("Enter address: ");
+        String phoneNumber = Input.inputString("Phone Number (10 numbers)", DataValidator.phone_regex);
     }
 }
