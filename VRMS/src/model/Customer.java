@@ -9,7 +9,7 @@ package model;
  * @author haith
  */
 public class Customer {
-    private int cccd;
+    private String cccd;
     private String name;
     private String dateOfBirth;
     private String address;
@@ -18,7 +18,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(int cccd, String name, String dateOfBirth, String address, String phoneNumber) {
+    public Customer(String cccd, String name, String dateOfBirth, String address, String phoneNumber) {
         this.cccd = cccd;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -26,11 +26,11 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getCccd() {
+    public String getCccd() {
         return cccd;
     }
 
-    public void setCccd(int cccd) {
+    public void setCccd(String cccd) {
         this.cccd = cccd;
     }
 

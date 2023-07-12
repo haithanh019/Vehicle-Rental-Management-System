@@ -36,6 +36,16 @@ public class DataValidator {
                 return false;
             }
         }
-        
+        public static boolean validateDateOfBirth(String dateOfBirth) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat(date_format);
+            dateFormat.setLenient(false);
+
+            try {
+                dateFormat.parse(dateOfBirth);
+                return true;
+            } catch (ParseException e) {
+                return false;
+            }
+        }
    
 }
