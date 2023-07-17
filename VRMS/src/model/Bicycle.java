@@ -17,9 +17,21 @@ public class Bicycle extends Vehicle {
         super(type, id, brand, licensePlates, costPerHour);
     }
 
+    public Bicycle(String type, String id, String brand, String licensePlates, Double costPerHour, Boolean isAvailable) {
+        super(type, id, brand, licensePlates, costPerHour, isAvailable);
+    }
+    
+    public String isAvailable() {
+        return this.isAvailable ? "Available" : "Not available";
+    }
+
     @Override
     public void show() {
         System.out.printf("\n|BICYCLE   |%-10s|%4s|%-10s|%8s|%7s|", type, id, brand, licensePlates, costPerHour);
     }
 
+    public void adminShow() {
+        System.out.printf("\n|BICYCLE   |%-10s|%4s|%-10s|%8s|%7s|%-13s|", type, id, brand, licensePlates, costPerHour, isAvailable());
+    }
+    
 }

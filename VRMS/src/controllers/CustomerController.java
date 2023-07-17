@@ -8,11 +8,15 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.function.Predicate;
 import model.Customer;
+import utils.DataValidator;
+import utils.Input;
 
 /**
  *
@@ -21,10 +25,16 @@ import model.Customer;
 public class CustomerController {
 
     public ArrayList<Customer> customerList = new ArrayList<>();
+    private static final String PATH_CUSTOMER = "src/resources/Customer.txt";
+
+    public CustomerController() {
+        readDataFromFile(PATH_CUSTOMER);
+    }
 
     //add customer
     public void addCustomer(Customer customer) {
         customerList.add(customer);
+        System.out.println("Added successfully!");
     }
 
     //display all customer
@@ -48,34 +58,6 @@ public class CustomerController {
         return searchResult;
     }
 
-//    //update customer
-//    public void updateCustomer(String cccd, String name, String dateOfBirth, String address, String phoneNumber){
-//        for(Customer customer : customerList){
-//            if(customer.getCccd().equalsIgnoreCase(cccd)){
-//                customer.setCccd(cccd);
-//                customer.setName(name);
-//                customer.setDateOfBirth(dateOfBirth);
-//                customer.setAddress(address);
-//                customer.setPhoneNumber(phoneNumber);
-//                System.out.println("Update successfully!");
-//                return;
-//           }
-//        }
-//        System.out.println("Customer not found with CCCD: " + cccd);
-//    }
-    public void updateCustomer(String cccd, String name, String dateOfBirth, String address, String phoneNumber) {
-        Customer customer = findCustomerByCCCD(cccd);
-        if (customer != null) {
-            updateCustomerName(customer, name);
-            updateCustomerDateOfBirth(customer, dateOfBirth);
-            updateCustomerAddress(customer, address);
-            updateCustomerPhoneNumber(customer, phoneNumber);
-            System.out.println("Update successfully!");
-        } else {
-            System.out.println("Customer not found with CCCD: " + cccd);
-        }
-    }
-
     public Customer findCustomerByCCCD(String cccd) {
         for (Customer customer : customerList) {
             if (customer.getCccd().equalsIgnoreCase(cccd)) {
@@ -84,28 +66,28 @@ public class CustomerController {
         }
         return null;
     }
-    
-        public void updateCustomerCCCD(Customer customer, String cccd) {
-        customer.setCccd(cccd);
-    }
-    public void updateCustomerName(Customer customer, String name) {
-        customer.setName(name);
+
+    public void updateCustomerCCCD(Customer c, String newCccd) {
+        c.setCccd(newCccd);
     }
 
-    public void updateCustomerDateOfBirth(Customer customer, String dateOfBirth) {
-        customer.setDateOfBirth(dateOfBirth);
+    public void updateCustomerName(Customer c, String name) {
+        c.setName(name);
     }
 
-    public void updateCustomerAddress(Customer customer, String address) {
-        customer.setAddress(address);
+    public void updateCustomerDateOfBirth(Customer c, Date dateOfBirth) {
+        c.setDateOfBirth(dateOfBirth);
     }
 
-    public void updateCustomerPhoneNumber(Customer customer, String phoneNumber) {
-        customer.setPhoneNumber(phoneNumber);
+    public void updateCustomerAddress(Customer c, String address) {
+        c.setAddress(address);
     }
 
-    //ham doc du lieu
-    public <T extends Customer> void readDataFromFile(String path, Class<T> clazz) {
+    public void updateCustomerPhoneNumber(Customer c, String phoneNumber) {
+        c.setPhoneNumber(phoneNumber);
+    }
+
+    public void readDataFromFile(String path) {
         try {
             FileInputStream fis = new FileInputStream(path);
             InputStreamReader isr = new InputStreamReader(fis);
@@ -114,46 +96,47 @@ public class CustomerController {
             while (line != null) {
                 String arr[] = line.split(",");
                 if (arr.length == 5) {
-                    T v = clazz.getDeclaredConstructor(String.class, String.class, String.class, String.class, Double.class)
-                            .newInstance(arr[0], arr[1], arr[2], arr[3], Double.parseDouble(arr[4]));
-                    customerList.add(v);
+                    if (Input.convertStringToDate(arr[3], DataValidator.date_format) != null) {
+                        boolean isValidCCCD = DataValidator.checkRegex(arr[0], DataValidator.CCCD_regex);
+                        boolean isValidName = DataValidator.checkRegex(arr[1], DataValidator.name_regex);
+                        boolean isValidPhone = DataValidator.checkRegex(arr[4], DataValidator.phone_regex);
+                        boolean isValidDob = DataValidator.checkRegex(arr[3], DataValidator.date_regex);
+
+                        if (isValidCCCD && isValidName && isValidPhone && isValidDob) {
+                            Customer customer = new Customer(arr[0], arr[1], Input.convertStringToDate(arr[3], DataValidator.date_format), arr[2], arr[4]);
+                            customerList.add(customer);
+                        }
+                    }
                 }
                 line = br.readLine();
             }
             br.close();
             isr.close();
             fis.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public <T extends Customer> void writeDataToFile(String path, Class<T> clazz) {
+    public boolean writeDataToFile() {
         try {
-            FileOutputStream fos = new FileOutputStream(path);
+            FileOutputStream fos = new FileOutputStream(PATH_CUSTOMER);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
             BufferedWriter bw = new BufferedWriter(osw);
-
             for (Customer customer : customerList) {
-                if (clazz.isInstance(customer)) {
-                    T castCustomer = clazz.cast(customer);
-                    String line = castCustomer.getCccd() + ","
-                            + castCustomer.getName() + ","
-                            + castCustomer.getDateOfBirth() + ","
-                            + castCustomer.getAddress() + ","
-                            + castCustomer.getPhoneNumber();
-
-                    bw.write(line);
-                    bw.newLine();
-                }
+                String line = customer.getCccd() + "," + customer.getName() + "," + customer.getAddress() + "," + customer.getFormattedDOB() + "," + customer.getPhoneNumber();
+                bw.write(line);
+                bw.newLine();
             }
-
             bw.close();
             osw.close();
             fos.close();
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return false;
     }
-
 }

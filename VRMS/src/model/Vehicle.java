@@ -15,6 +15,7 @@ public abstract class Vehicle {
     protected String brand;
     protected String licensePlates;
     protected Double costPerHour;
+    protected boolean isAvailable;
 
     public Vehicle() {
     }
@@ -25,6 +26,16 @@ public abstract class Vehicle {
         this.brand = brand;
         this.licensePlates = licensePlates;
         this.costPerHour = costPerHour;
+        this.isAvailable = true;
+    }
+    
+    public Vehicle(String type, String id, String brand, String licensePlates, Double costPerHour, Boolean isAvailable) {
+        this.type = type;
+        this.id = id;
+        this.brand = brand;
+        this.licensePlates = licensePlates;
+        this.costPerHour = costPerHour;
+        this.isAvailable = isAvailable;
     }
 
     public String getId() {
@@ -45,6 +56,22 @@ public abstract class Vehicle {
 
     public String getLicensePlates() {
         return licensePlates;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public boolean isIsAvailable() {
+        return isAvailable;
+    }
+
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
     public void setLicensePlates(String licensePlates) {

@@ -4,6 +4,9 @@
  */
 package model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author haith
@@ -11,14 +14,14 @@ package model;
 public class Customer {
     private String cccd;
     private String name;
-    private String dateOfBirth;
+    private Date dateOfBirth;
     private String address;
     private String phoneNumber;
 
     public Customer() {
     }
 
-    public Customer(String cccd, String name, String dateOfBirth, String address, String phoneNumber) {
+    public Customer(String cccd, String name, Date dateOfBirth, String address, String phoneNumber) {
         this.cccd = cccd;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
@@ -42,11 +45,11 @@ public class Customer {
         this.name = name;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -64,5 +67,15 @@ public class Customer {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" + "cccd=" + cccd + ", name=" + name + ", dateOfBirth=" + getFormattedDOB() + ", address=" + address + ", phoneNumber=" + phoneNumber + '}';
+    }
+    
+    public String getFormattedDOB() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        return dateFormat.format(dateOfBirth);
     }
 }
